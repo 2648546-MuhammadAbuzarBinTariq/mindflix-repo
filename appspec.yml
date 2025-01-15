@@ -1,10 +1,8 @@
 version: 0.0
 os: linux
 files:
-  - source: mindflix-frontend/build/
-    destination: /var/www/html/mindflix-frontend  # Frontend location
-  - source: mindflix-backend/
-    destination: /home/ec2-user/mindflix-backend  # Backend location
+  - source: /
+    destination: /home/ec2-user/mindflix  # Deployment directory
 hooks:
   BeforeInstall:
     - location: scripts/stop-services.sh

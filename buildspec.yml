@@ -6,21 +6,36 @@ phases:
       nodejs: 14
       python: 3.9
     commands:
-      - echo "Installing frontend dependencies..."
+      - echo "Installing dependencies for all services and frontend..."
       - cd mindflix-frontend
       - npm install
-      - echo "Installing backend dependencies..."
-      - cd ../mindflix-backend
+      - echo "Frontend dependencies installed."
+      - cd ../signup-service
       - pip install -r requirements.txt
+      - echo "Signup-service dependencies installed."
+      - cd ../video-metadata-service
+      - pip install -r requirements.txt
+      - echo "Video-metadata-service dependencies installed."
+      - cd ../video-streaming-service
+      - pip install -r requirements.txt
+      - echo "Video-streaming-service dependencies installed."
+      - cd ../profile-service
+      - pip install -r requirements.txt
+      - echo "Profile-service dependencies installed."
   build:
     commands:
       - echo "Building frontend..."
       - cd ../mindflix-frontend
       - npm run build
+      - echo "Frontend build completed."
   post_build:
     commands:
-      - echo "Build completed successfully!"
+      - echo "Preparing artifacts for deployment..."
 artifacts:
   files:
-    - mindflix-frontend/build/**/*  # Built frontend files
-    - mindflix-backend/**/*        # Backend files
+    - docker-compose.yml
+    - mindflix-frontend/build/**/*              # Frontend build output
+    - signup-service/**/*                      # Signup service files
+    - video-metadata-service/**/*              # Video metadata service files
+    - video-streaming-service/**/*             # Video streaming service files
+    - profile-service/**/*                     # Profile service files

@@ -3,22 +3,40 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 14
-      python: 3.9
+      nodejs: 14  # For the frontend
+      python: 3.9  # For the backend services
     commands:
-      - echo "Installing frontend dependencies for testing..."
-      - cd mindflix-frontend
+      - echo "Installing dependencies for testing..."
+      - cd ../mindflix-frontend
       - npm install
-      - echo "Installing backend dependencies for testing..."
-      - cd ../mindflix-backend
+      - echo "Installing backend dependencies for signup-service testing..."
+      - cd ../signup-service
+      - pip install -r requirements.txt
+      - echo "Installing backend dependencies for video-metadata-service testing..."
+      - cd ../video-metadata-service
+      - pip install -r requirements.txt
+      - echo "Installing backend dependencies for video-streaming-service testing..."
+      - cd ../video-streaming-service
+      - pip install -r requirements.txt
+      - echo "Installing backend dependencies for profile-service testing..."
+      - cd ../profile-service
       - pip install -r requirements.txt
   test:
     commands:
       - echo "Running frontend tests..."
       - cd ../mindflix-frontend
       - npm test -- --watchAll=false
-      - echo "Running backend tests..."
-      - cd ../mindflix-backend
+      - echo "Running tests for signup-service..."
+      - cd ../signup-service
+      - pytest
+      - echo "Running tests for video-metadata-service..."
+      - cd ../video-metadata-service
+      - pytest
+      - echo "Running tests for video-streaming-service..."
+      - cd ../video-streaming-service
+      - pytest
+      - echo "Running tests for profile-service..."
+      - cd ../profile-service
       - pytest
   post_build:
     commands:
