@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+      python: 3.9
+    commands:
+      - echo "Installing frontend dependencies for testing..."
+      - cd mindflix-frontend
+      - npm install
+      - echo "Installing backend dependencies for testing..."
+      - cd ../mindflix-backend
+      - pip install -r requirements.txt
+  test:
+    commands:
+      - echo "Running frontend tests..."
+      - cd ../mindflix-frontend
+      - npm test -- --watchAll=false
+      - echo "Running backend tests..."
+      - cd ../mindflix-backend
+      - pytest
+  post_build:
+    commands:
+      - echo "Tests completed successfully!"

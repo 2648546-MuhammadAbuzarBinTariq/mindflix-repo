@@ -1,0 +1,16 @@
+version: 0.0
+os: linux
+files:
+  - source: mindflix-frontend/build/
+    destination: /var/www/html/mindflix-frontend  # Frontend location
+  - source: mindflix-backend/
+    destination: /home/ec2-user/mindflix-backend  # Backend location
+hooks:
+  BeforeInstall:
+    - location: scripts/stop-services.sh
+      timeout: 300
+      runas: ec2-user
+  AfterInstall:
+    - location: scripts/start-services.sh
+      timeout: 300
+      runas: ec2-user

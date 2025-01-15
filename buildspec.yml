@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+      python: 3.9
+    commands:
+      - echo "Installing frontend dependencies..."
+      - cd mindflix-frontend
+      - npm install
+      - echo "Installing backend dependencies..."
+      - cd ../mindflix-backend
+      - pip install -r requirements.txt
+  build:
+    commands:
+      - echo "Building frontend..."
+      - cd ../mindflix-frontend
+      - npm run build
+  post_build:
+    commands:
+      - echo "Build completed successfully!"
+artifacts:
+  files:
+    - mindflix-frontend/build/**/*  # Built frontend files
+    - mindflix-backend/**/*        # Backend files
