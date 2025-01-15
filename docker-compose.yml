@@ -1,0 +1,56 @@
+version: "3.9"
+
+services:
+  signup-service:
+    build:
+      context: ./signup-service
+    ports:
+      - "8001:8001"
+    restart: always
+    mem_limit: 256m
+    environment:
+      - AWS_REGION=us-east-1
+
+  video-metadata-service:
+    build:
+      context: ./video-metadata-service
+    ports:
+      - "8002:8002"
+    restart: always
+    mem_limit: 256m
+    environment:
+      - AWS_REGION=us-east-1
+
+  video-streaming-service:
+    build:
+      context: ./video-streaming-service
+    ports:
+      - "8003:8003"
+    restart: always
+    mem_limit: 256m
+    environment:
+      - AWS_REGION=us-east-1
+
+  profile-service:
+    build:
+      context: ./profile-service
+    ports:
+      - "8004:8004"
+    depends_on:
+      - dynamodb
+    environment:
+      - AWS_REGION=us-east-1
+
+  dynamodb:
+    image: amazon/dynamodb-local:latest
+    ports:
+      - "8000:8000"
+    command: "-jar DynamoDBLocal.jar -inMemory -sharedDb"
+    working_dir: /home/dynamodblocal
+    volumes:
+      - dynamodb-data:/home/dynamodblocal
+    environment:
+      - AWS_REGION=us-east-1
+
+volumes:
+  dynamodb-data:

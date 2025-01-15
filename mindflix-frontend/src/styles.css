@@ -1,0 +1,235 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  /* Welcome Section */
+.welcome {
+  text-align: center;
+  margin: 50px auto;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.welcome span {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #ddd;
+  margin-top: 10px;
+}
+
+/* Category Section */
+.category-section {
+  margin: 30px auto;
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #444;
+}
+
+.category-section h2 {
+  color: #e50914; /* Netflix red */
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+  
+  /* Body Styling */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #141414; /* Netflix-like dark background */
+    color: #fff;
+    line-height: 1.6;
+  }
+  
+  /* Navbar Styling */
+  nav {
+    background-color: #111; /* Darker background for navbar */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  
+  nav ul li a:hover {
+    color: #e50914; /* Netflix red */
+  }
+  
+  button {
+    background-color: #e50914;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #f40612;
+  }
+  
+  /* Video Grid */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Larger thumbnails */
+  gap: 20px;
+  padding: 20px;
+}
+
+.video-grid div {
+  position: relative;
+  background-color: #222;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.video-grid div:hover {
+  transform: scale(1.05); /* Zoom effect */
+}
+  
+  video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border-bottom: 2px solid #e50914; /* Red border for videos */
+  }
+  .video-title {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .video-grid p {
+    text-align: center;
+    margin: 10px 0;
+  }
+  
+  /* Form Styling */
+  form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #222;
+    border-radius: 5px;
+  }
+  
+  form h2 {
+    margin-bottom: 20px;
+    color: #e50914;
+  }
+  
+  form input,
+  form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  form input::placeholder,
+  form textarea::placeholder {
+    color: #aaa;
+  }
+  
+  form button {
+    width: 100%;
+  }
+  
+  /* Categories List */
+  ul {
+    padding: 20px;
+  }
+  
+  ul li {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  ul li a {
+    color: #e50914;
+    text-decoration: none;
+  }
+  
+  ul li a:hover {
+    text-decoration: underline;
+  }
+
+  /* Profile Container */
+.profile-container {
+  max-width: 600px;
+  margin: 50px auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+}
+
+.profile-container p {
+  font-size: 1.1rem;
+  margin: 10px 0;
+  color: #555;
+}
+
+.profile-container p strong {
+  color: #333;
+}
+
+.profile-container h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+/* Profile Buttons */
+.profile-container button {
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.profile-container button:hover {
+  background-color: #f40612;
+}
+
+.profile-container button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.5);
+}
+  
