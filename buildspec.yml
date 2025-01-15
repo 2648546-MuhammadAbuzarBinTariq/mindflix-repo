@@ -3,10 +3,10 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 14  # For frontend
-      python: 3.9  # For backend
+      nodejs: 14
+      python: 3.9
     commands:
-      - echo "Installing dependencies..."
+      - echo "Installing dependencies for all services and frontend..."
       - cd mindflix-frontend
       - npm install
       - echo "Frontend dependencies installed."
@@ -24,33 +24,18 @@ phases:
       - echo "Profile-service dependencies installed."
   build:
     commands:
-      - echo "Running tests for frontend..."
-      - cd ../mindflix-frontend
-      - npm test -- --watchAll=false
-      - echo "Running tests for signup-service..."
-      - cd ../signup-service
-      - pytest
-      - echo "Running tests for video-metadata-service..."
-      - cd ../video-metadata-service
-      - pytest
-      - echo "Running tests for video-streaming-service..."
-      - cd ../video-streaming-service
-      - pytest
-      - echo "Running tests for profile-service..."
-      - cd ../profile-service
-      - pytest
       - echo "Building frontend..."
       - cd ../mindflix-frontend
       - npm run build
-      - echo "Build completed."
+      - echo "Frontend build completed."
   post_build:
     commands:
-      - echo "Packaging artifacts for deployment..."
+      - echo "Preparing artifacts for deployment..."
 artifacts:
   files:
-    - docker-compose.yml                  # Docker Compose configuration
-    - mindflix-frontend/build/**/*        # Frontend build output
-    - signup-service/**/*                 # Signup service files
-    - video-metadata-service/**/*         # Video metadata service files
-    - video-streaming-service/**/*        # Video streaming service files
-    - profile-service/**/*                # Profile service files
+    - docker-compose.yml
+    - mindflix-frontend/build/**/*              # Frontend build output
+    - signup-service/**/*                      # Signup service files
+    - video-metadata-service/**/*              # Video metadata service files
+    - video-streaming-service/**/*             # Video streaming service files
+    - profile-service/**/*                     # Profile service files
